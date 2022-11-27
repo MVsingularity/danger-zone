@@ -2,5 +2,36 @@ extends layout
 
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .row
+    .col-sm-3
+      div(style="width: 18rem; height: 14rem;").card.mt-3
+        img.card-img-top(src='{{this.imgUrl}}' alt='Card image cap')
+        .card-body
+            h5.card-title {{this.title}}
+            p.card-text {{this.desc}}
+            .text-left
+              a.btn.btn-info(href='#') Learn More
+    .col-sm-3        
+      div(style="width: 18rem; height: 14rem;").card.mt-3
+        img.card-img-top(src='{{this.imgUrl}}' alt='Card image cap')
+        .card-body
+            h5.card-title {{this.title}}
+            p.card-text {{this.desc}}
+            .text-left
+              a.btn.btn-info(href='#') Learn More
+    .col-sm-3        
+      div(style="width: 18rem; height: 14rem;").card.mt-3
+        img.card-img-top(src='{{this.imgUrl}}' alt='Card image cap')
+        .card-body
+            h5.card-title {{this.title}}
+            p.card-text {{this.desc}}
+            .text-left
+              a.btn.btn-info(href='#') Learn More
+    .col-sm-3        
+      div(style="width: 18rem; height: 14rem;").card.mt-3
+        img.card-img-top(src='{{this.imgUrl}}' alt='Card image cap')
+        .card-body
+            h5.card-title {{this.title}}
+            p.card-text {{this.desc}}
+            .text-left
+              a.btn.btn-info(href='#') Learn More
