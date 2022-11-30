@@ -1,0 +1,19 @@
+{
+  "development": {
+    "username": null,
+    "password": null,
+    "database": "danger-zone",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": null,
+    "password": null,
+    "database": "danger-zone-test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "use_env_variable": "C:/Applications/Postgres.app/Contents/Versions/15/bin/psql/p5432/danger-zone"
+  }
+}

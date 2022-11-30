@@ -1,2 +1,18 @@
-form(id="", method="post", action="/index")
-  
+extends layout
+
+block content
+  form(id="", method="post", action="/index")
+    fieldset
+      legend New Zone
+      // TITLE
+      p
+        label(for='title') Name
+        br
+        input(type='text' name='title')
+      p
+        label(for='desc') Description
+        br
+        input(type='text' name='desc')
+    // BUTTON
+    p
+      button(type='submit') Save Zone

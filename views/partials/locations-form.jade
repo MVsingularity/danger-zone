@@ -1,0 +1,9 @@
+.form-group
+  label(for='title') Title
+  input.form-control(name='title' placeholder='Place' value='{{event.title}}')
+.form-group
+  label(for='desc') Description
+  textarea.form-control(name='desc' placeholder='Description') {{event.desc}}
+.form-group
+  label(for='imgUrl') Image Url
+  input.form-control(name='imgUrl' placeholder='' value='{{location.imgUrl}}')

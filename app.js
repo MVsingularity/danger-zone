@@ -9,15 +9,21 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+var bodyParser = require('body-parser');
+
+const models = require('./db/models');
+
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade')
 
-app.get('/', function (req, res) {
 
-    res.render('index');
-
-});
 
 var server = app.listen(5000, function () {
     console.log('Node server is running..');
@@ -32,6 +38,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
+
+require('./routes/locations')(app);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
