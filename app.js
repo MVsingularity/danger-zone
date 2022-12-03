@@ -39,8 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/', usersRouter);
 
-require('./routes/locations')(app);
-
+require('./routes/locations')(app, models);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,29 @@
+extends layout
+
+
+block content
+  .row.mt-4
+    .col-lg-6
+      img.img-fluid.w-100.rounded.mb-3(src="#{event.imgUrl}" alt='Card image cap')
+      small.text-muted Created on: {{event.createdAtFormatted}}
+      h3 #{l.title}
+      .lead #{l.desc}
+      .text-right
+        {{#if isEquals}}
+        a(href="/events/{{event.id}}/edit") Edit
+             {{/if}}
+    .col-lg-4.offset-lg-1
+      .d-flex.justify-content-between
+        b Reviews! ({{event.Rsvps.length}})
+        a.btn.btn-primary.btn-sm(href='/events/{{event.id}}/rsvps/new') Leave a Review!
+      .list-group.mt-4
+        | {{#each event.Rsvps}}
+        .list-group-item.clearfix
+          .float-left
+            | {{this.name}}
+          .float-right
+            | {{#if isEquals}}
+            form.form-inline(action='/events/{{../event.id}}/rsvps/{{this.id}}?_method=DELETE' method='post')
+              button.btn.btn-link.btn-sm(type='submit') Remove
+            |           {{/if}}
+        |       {{/each}}

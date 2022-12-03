@@ -3,13 +3,13 @@ extends layout
 
 block content
   .row
-    each locations
+    each l in locations
       .col-sm-3
         div(style="width: 18rem; height: 14rem;").card.mt-3
-          img.card-img-top(src='{{this.imgUrl}}' alt='Card image cap')
+          img.card-img-top(src="#{l.imgUrl}" alt='Card image cap')
           .card-body
-              h5.card-title this.title
-              p.card-text this.desc
+              h5.card-title= l.title
+              p.card-text= l.desc
               .text-left
-                a.btn.btn-info(href='#') Learn More
+                a.btn.btn-info(href="/locations/#{l.id}") Learn More
     

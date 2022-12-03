@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  form(id="", method="post", action="/index")
+  form(id="", method="post", action="/locations")
     fieldset
       legend New Zone
       // TITLE
@@ -13,6 +13,10 @@ block content
         label(for='desc') Description
         br
         input(type='text' name='desc')
+      p
+        label(for='imgUrl') image link
+        br
+        input(type='text' name='imgUrl')  
     // BUTTON
     p
       button(type='submit') Save Zone
