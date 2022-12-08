@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .row.mt-4
+    .col-lg-6.offset-lg-3
+      .card
+        .card-body
+          .card-title
+            h3 Update Event
+          .card-text
+            form(action='/events/{{event.id}}?_method=PUT' method='post')
+              {{> events-form }}
+            .text-right
+              a.text-muted.mr-2(href='/events/{{event.id}}') Cancel
+              button.btn.btn-primary(type='submit' name='button') Update
+          form(action='/events/{{event.id}}?_method=DELETE' method='POST')
+            button.btn.btn-danger(type='submit') Delete

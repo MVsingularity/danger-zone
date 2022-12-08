@@ -1,0 +1,28 @@
+extends layout
+
+
+block content
+  .row.mt-4
+    .col-lg-6
+      img.img-fluid.w-100.rounded.mb-3(src="#{location.imgUrl}" alt='Card image cap')
+      //- small.text-muted Created on: #{l.createdAtFormatted}
+      h3 #{location.title}
+      .lead #{location.desc}
+        .text-right
+          if isEquals
+          a(href="/events/#{location.id}/edit") Edit
+      .col-lg-4.offset-lg-1
+        .d-flex.justify-content-between
+          //- b Reviews! ("#{location.review.length}")
+          a.btn.btn-primary.btn-sm(href='/locations/#{location.id}/reviews/new') Leave a Review!
+        .list-group.mt-4
+          each r in location.Reviews
+            .list-group-item.clearfix
+              .float-left
+                "#{r.review}"
+              .float-right
+                //-   if isEquals
+                //- form.form-inline(action='/locations/#{../location.id}/rsvps/{{this.id}}?_method=DELETE' method='post')
+                //-   button.btn.btn-link.btn-sm(type='submit') Remove
+                //- 
+                

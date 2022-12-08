@@ -3,11 +3,14 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  const Location = sequelize.define('Location', {
+  var Location = sequelize.define('Location', {
     title: DataTypes.STRING,
     desc: DataTypes.TEXT,
     imgUrl: DataTypes.STRING
   })
 
+  Location.associate = function(models) {
+    Location.hasMany(models.Review);
+  }
   return Location;
 };
