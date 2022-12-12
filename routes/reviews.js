@@ -14,7 +14,7 @@ module.exports = function (app, models) {
   app.post('/locations/:locationId/reviews', (req, res) => {
       req.body.LocationId = req.params.locationId;
       models.Review.create(req.body).then(review => {
-        // review.setUser(res.locals.currentUser);
+        review.setUser(res.locals.currentUser);
         res.redirect(`/locations/${req.params.locationId}`);
       }).catch((err) => {
           console.log(err)

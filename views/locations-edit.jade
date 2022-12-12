@@ -6,12 +6,12 @@ block content
       .card
         .card-body
           .card-title
-            h3 Update Event
+            h3 Update Zone
           .card-text
-            form(action='/events/{{event.id}}?_method=PUT' method='post')
-              {{> events-form }}
+            form(action='/locations/#{locations.id}?_method=PUT' method='post')
+              {{> locations-form }}
             .text-right
-              a.text-muted.mr-2(href='/events/{{event.id}}') Cancel
+              a.text-muted.mr-2(href='/locations/#{location.id}') Cancel
               button.btn.btn-primary(type='submit' name='button') Update
-          form(action='/events/{{event.id}}?_method=DELETE' method='POST')
+          form(action='/locations/#{location.id}?_method=DELETE' method='POST')
             button.btn.btn-danger(type='submit') Delete

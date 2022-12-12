@@ -1,6 +1,8 @@
 var createError = require('http-errors');
 var express = require('express');
 const methodOverride = require('method-override')
+const jwt = require('jsonwebtoken');
+
 
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -42,6 +44,54 @@ app.use(methodOverride('_method'))
 app.use('/', indexRouter);
 app.use('/', usersRouter);
 
+app.use(cookieParser());
+
+app.use(function authenticateToken(req, res, next) {
+  // Gather the jwt access token from the cookie
+  const token = req.cookies.mpJWT;
+
+  if (token) {
+    jwt.verify(token, "AUTH-SECRET", (err, user) => {
+      if (err) {
+        console.log(err)
+        // redirect to login if not logged in and trying to access a protected route
+        res.redirect('/login')
+      }
+      req.user = user
+      next(); // pass the execution off to whatever request the client intended
+    })
+  } else {
+    next();
+  }
+});
+
+app.use((req, res, next) => {
+// if a valid JWT token is present
+  if (req.user) {
+  // Look up the user's record
+    models.User.findByPk(req.user.id).then(currentUser => {
+    // make the user object available in all controllers and templates
+      res.locals.currentUser = currentUser;
+      next()
+    }).catch(err => {
+      console.log(err)
+    })
+  } else {
+    next();
+  }
+});
+app.use(cookieParser("BETTERSECRET"));
+const expiryDate = new Date(Date.now() + 60 * 60 * 1000 * 24 * 60) // 60 days
+
+app.use(session({
+  secret: "ANOTHERSECRET",
+  cookie: {expires: expiryDate },
+  // store: sessionStore,
+  resave: true,
+  saveUninitialized: true
+}));
+
+require('./controllers/users')(app, models);
 require('./routes/locations')(app, models);
 require('./routes/reviews')(app, models);
 // catch 404 and forward to error handler

@@ -6,10 +6,10 @@ html
     link(rel='stylesheet', href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css")
 
   body
-    block navbar 
+    block navbar
       nav.navbar.navbar-expand-lg.navbar-light.bg-light
         div.collapse.navbar-collapse
-          a(href="/").navbar-brand 
+          a(href="/").navbar-brand
             h1 Danger Zone
           ul.navbar-nav.mr-auto
             li.nav-item.active
@@ -17,8 +17,18 @@ html
             li.nav-item.active
               a(href="#").nav-link Theme
             li.nav-item.active
-              a(href="/locations/new").nav-link Upload
-    block content        
+              a(href="/locations/new").nav-link Create
+            if currentUser
+              li.nav-item.active
+                a.nav-link(href='/me') Profile
+              li.nav-item.active
+                a.nav-link(href='/logout') Logout
+            else
+              li.nav-item.active
+                a(href="/login").nav-link Sign-up
+              li.nav-item.active
+                a(href="/sign-up").nav-link Login
+    block content
 
 
 

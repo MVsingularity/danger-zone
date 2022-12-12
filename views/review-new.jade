@@ -9,15 +9,15 @@ block content
           .card-title
             h3 Write your thoughts
             .lead
-               Location: {{location.title}}
+               Location: #{location.title}
           .card-text
             form(action='/locations/#{locations.id}/reviews' method='post')
               .form-group
-                label(for='title') 
+                label(for='title')
                   h2 Name
                 input.form-control(name='name' placeholder='Jane Doe')
               .form-group
-                label(for='title') 
+                label(for='title')
                   h4 Review
                 textarea.form-control(name='review' rows='5')
               .form-group
