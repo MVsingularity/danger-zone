@@ -10,6 +10,8 @@ module.exports = (sequelize, DataTypes) => {
   })
   review.associate = function(models) {
     review.belongsTo(models.Location);
+    review.belongsTo(models.User);
+
   }
 
   return review;
